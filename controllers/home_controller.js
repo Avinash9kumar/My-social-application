@@ -1,6 +1,10 @@
 module.exports.home = function(req,res){
 
-return res.end('<h1>Come from home comtroller</h1>')
+return res.render('home',{
+
+   title: "home"
+
+});
 
 
 }
