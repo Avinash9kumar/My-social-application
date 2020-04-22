@@ -4,6 +4,14 @@ const app = express();
 const port = 8000;
 const expressLayout = require('express-ejs-layouts');
 const db = require("./config/mongoose");
+
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('./config/Passport-local-strategy');
+const MongoStore = require('connect-mongo')(session);
+
+
+
 app.use(express.urlencoded());
 app.use(cookieparser());
 
@@ -16,6 +24,32 @@ app.set('layout extractScripts',true);
 // set up the view engine
 app.set('view engine','ejs');
 app.set('views','./views');
+
+
+app.use(session({
+
+     name:'codeial',
+     secret: 'blahsomthing',
+     resave: false,
+     cookie:{
+         maxAge:(1000*60*60)
+     },
+     store: new MongoStore(
+       
+        {
+       mongooseConnection: db,
+       autoRemove: 'disabled'
+        },
+        function(err){
+            console.log(err|| 'connect-mongodb setup ok');
+        }
+     )
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 // use express router
 app.use('/',require('./routes'));
