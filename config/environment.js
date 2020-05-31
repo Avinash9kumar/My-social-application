@@ -24,8 +24,8 @@ const development = {
         port: 587,
         secure: false,
         auth: {
-            user: 'alchemy.cn18',
-            pass: 'codingninjas'
+            user: 'avinash9999yadav',
+            pass: 'Avinash@2626'
         }
     },
     google_client_id: "326677508215-tt5m0ndorh8s9la6f3c53jqbmtkdndsr.apps.googleusercontent.com",
@@ -36,7 +36,6 @@ const development = {
         mode: 'dev',
         options: {stream: accessLogStream}
     }
-    
 }
 
 
