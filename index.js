@@ -12,7 +12,7 @@ const db = require('./config/mongoose');
 // used for session cookie
 const session = require('express-session');
 const passport = require('passport');
-const passportLocal = require('./config/passport-local-strategy');
+const passportLocal = require('/config/passport-local-strategy');
 const passportJWT = require('./config/passport-jwt-strategy');
 const passportGoogle = require('./config/passport-google-oauth2-strategy');
 
